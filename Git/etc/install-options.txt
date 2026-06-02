@@ -1,4 +1,4 @@
-Editor Option: VIM
+Editor Option: VisualStudioCode
 Custom Editor Path: 
 Default Branch Option:  
 Path Option: Cmd
