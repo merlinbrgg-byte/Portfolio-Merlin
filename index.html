@@ -8,470 +8,184 @@
 <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet">
 <style>
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
   :root {
-    --blue: #185FA5;
-    --blue-dark: #0c3d6e;
-    --blue-light: #378ADD;
-    --amber: #BA7517;
-    --amber-light: #EF9F27;
-    --green: #1D9E75;
-    --green-light: #5DCAA5;
-    --white: #ffffff;
-    --off-white: #f4f2ee;
-    --gray-light: #e8e4dc;
-    --text-dark: #0f1923;
-    --text-mid: #3a4a5c;
+    --blue: #185FA5; --blue-dark: #0c3d6e; --blue-light: #378ADD;
+    --amber: #BA7517; --amber-light: #EF9F27;
+    --green: #1D9E75; --green-light: #5DCAA5;
+    --white: #ffffff; --off-white: #f4f2ee;
+    --gray-light: #e8e4dc; --text-dark: #0f1923; --text-mid: #3a4a5c;
   }
-
   html { scroll-behavior: smooth; }
+  body { font-family: 'DM Sans', sans-serif; background: var(--off-white); color: var(--text-dark); overflow-x: hidden; }
 
-  body {
-    font-family: 'DM Sans', sans-serif;
-    background: var(--off-white);
-    color: var(--text-dark);
-    overflow-x: hidden;
-  }
-
-  /* ── NAV ── */
-  nav {
-    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
-    display: flex; align-items: center; justify-content: space-between;
-    padding: 20px 48px;
-    background: rgba(244,242,238,0.85);
-    backdrop-filter: blur(12px);
-    border-bottom: 1px solid rgba(24,95,165,0.1);
-  }
-  .nav-logo {
-    font-family: 'Clash Display', sans-serif;
-    font-weight: 800; font-size: 18px;
-    color: var(--blue-dark);
-    letter-spacing: -0.02em;
-  }
+  /* NAV */
+  nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; display: flex; align-items: center; justify-content: space-between; padding: 20px 48px; background: rgba(244,242,238,0.85); backdrop-filter: blur(12px); border-bottom: 1px solid rgba(24,95,165,0.1); }
+  .nav-logo { font-family: 'Clash Display', sans-serif; font-weight: 800; font-size: 18px; color: var(--blue-dark); letter-spacing: -0.02em; }
   .nav-logo span { color: var(--amber); }
-  .nav-links { display: flex; gap: 36px; list-style: none; }
-  .nav-links a {
-    font-size: 14px; font-weight: 400; color: var(--text-mid);
-    text-decoration: none; letter-spacing: 0.02em;
-    transition: color 0.2s;
-  }
+  .nav-links { display: flex; gap: 32px; list-style: none; }
+  .nav-links a { font-size: 14px; font-weight: 400; color: var(--text-mid); text-decoration: none; transition: color 0.2s; }
   .nav-links a:hover { color: var(--blue); }
-  .nav-cta {
-    background: var(--blue); color: white;
-    padding: 9px 20px; border-radius: 6px;
-    font-size: 14px; font-weight: 500;
-    text-decoration: none; transition: background 0.2s;
-  }
+  .nav-cta { background: var(--blue); color: white; padding: 9px 20px; border-radius: 6px; font-size: 14px; font-weight: 500; text-decoration: none; transition: background 0.2s; }
   .nav-cta:hover { background: var(--blue-dark); }
 
-  /* ── HERO ── */
-  #hero {
-    min-height: 100vh;
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    padding-top: 80px;
-    overflow: hidden;
-    position: relative;
-  }
-  .hero-left {
-    display: flex; flex-direction: column; justify-content: center;
-    padding: 80px 48px 80px 72px;
-    position: relative; z-index: 2;
-  }
-  .hero-tag {
-    display: inline-flex; align-items: center; gap: 8px;
-    background: rgba(24,95,165,0.1);
-    color: var(--blue); font-size: 12px; font-weight: 500;
-    padding: 6px 14px; border-radius: 100px;
-    letter-spacing: 0.08em; text-transform: uppercase;
-    margin-bottom: 28px;
-    width: fit-content;
-    animation: fadeUp 0.6s ease both;
-  }
-  .hero-tag::before {
-    content: ''; width: 7px; height: 7px;
-    border-radius: 50%; background: var(--green);
-    animation: pulse 2s infinite;
-  }
-  @keyframes pulse {
-    0%, 100% { opacity: 1; }
-    50% { opacity: 0.4; }
-  }
-  h1 {
-    font-family: 'Clash Display', sans-serif;
-    font-size: clamp(44px, 5vw, 72px);
-    font-weight: 800;
-    line-height: 1.0;
-    letter-spacing: -0.03em;
-    color: var(--text-dark);
-    animation: fadeUp 0.6s 0.1s ease both;
-  }
-  h1 .highlight {
-    display: block;
-    color: var(--blue);
-    position: relative;
-  }
-  h1 .highlight::after {
-    content: '';
-    position: absolute; bottom: 4px; left: 0;
-    width: 100%; height: 6px;
-    background: var(--amber-light);
-    opacity: 0.4;
-    z-index: -1;
-  }
-  .hero-desc {
-    margin-top: 28px;
-    font-size: 17px; line-height: 1.7;
-    color: var(--text-mid); max-width: 460px;
-    font-weight: 300;
-    animation: fadeUp 0.6s 0.2s ease both;
-  }
-  .hero-tags {
-    display: flex; flex-wrap: wrap; gap: 8px;
-    margin-top: 28px;
-    animation: fadeUp 0.6s 0.3s ease both;
-  }
-  .tag {
-    padding: 6px 14px; border-radius: 6px;
-    font-size: 13px; font-weight: 400;
-    border: 1px solid;
-  }
+  /* HERO */
+  #hero { min-height: 100vh; display: grid; grid-template-columns: 1fr 1fr; padding-top: 80px; overflow: hidden; position: relative; }
+  .hero-left { display: flex; flex-direction: column; justify-content: center; padding: 80px 48px 80px 72px; position: relative; z-index: 2; }
+  .hero-tag { display: inline-flex; align-items: center; gap: 8px; background: rgba(24,95,165,0.1); color: var(--blue); font-size: 12px; font-weight: 500; padding: 6px 14px; border-radius: 100px; letter-spacing: 0.08em; text-transform: uppercase; margin-bottom: 28px; width: fit-content; animation: fadeUp 0.6s ease both; }
+  .hero-tag::before { content: ''; width: 7px; height: 7px; border-radius: 50%; background: var(--green); animation: pulse 2s infinite; }
+  @keyframes pulse { 0%, 100% { opacity: 1; } 50% { opacity: 0.4; } }
+  h1 { font-family: 'Clash Display', sans-serif; font-size: clamp(44px, 5vw, 72px); font-weight: 700; line-height: 1.0; letter-spacing: -0.03em; color: var(--text-dark); animation: fadeUp 0.6s 0.1s ease both; }
+  h1 .highlight { display: block; color: var(--blue); position: relative; }
+  h1 .highlight::after { content: ''; position: absolute; bottom: 4px; left: 0; width: 100%; height: 6px; background: var(--amber-light); opacity: 0.4; z-index: -1; }
+  .hero-desc { margin-top: 28px; font-size: 17px; line-height: 1.7; color: var(--text-mid); max-width: 460px; font-weight: 300; animation: fadeUp 0.6s 0.2s ease both; }
+  .hero-tags { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 28px; animation: fadeUp 0.6s 0.3s ease both; }
+  .tag { padding: 6px 14px; border-radius: 6px; font-size: 13px; font-weight: 400; border: 1px solid; }
   .tag-blue { background: rgba(24,95,165,0.08); color: var(--blue); border-color: rgba(24,95,165,0.2); }
   .tag-amber { background: rgba(186,117,23,0.08); color: var(--amber); border-color: rgba(186,117,23,0.2); }
   .tag-green { background: rgba(29,158,117,0.08); color: var(--green); border-color: rgba(29,158,117,0.2); }
-  .hero-actions {
-    display: flex; align-items: center; gap: 16px;
-    margin-top: 40px;
-    animation: fadeUp 0.6s 0.4s ease both;
-  }
-  .btn-primary {
-    background: var(--blue); color: white;
-    padding: 14px 28px; border-radius: 8px;
-    font-size: 15px; font-weight: 500;
-    text-decoration: none; transition: all 0.2s;
-    display: inline-flex; align-items: center; gap: 8px;
-  }
+  .hero-actions { display: flex; align-items: center; gap: 16px; margin-top: 40px; animation: fadeUp 0.6s 0.4s ease both; }
+  .btn-primary { background: var(--blue); color: white; padding: 14px 28px; border-radius: 8px; font-size: 15px; font-weight: 500; text-decoration: none; transition: all 0.2s; display: inline-flex; align-items: center; gap: 8px; }
   .btn-primary:hover { background: var(--blue-dark); transform: translateY(-1px); }
-  .btn-secondary {
-    color: var(--text-mid); font-size: 15px;
-    text-decoration: none; display: flex; align-items: center; gap: 6px;
-    transition: color 0.2s;
-  }
+  .btn-secondary { color: var(--text-mid); font-size: 15px; text-decoration: none; display: flex; align-items: center; gap: 6px; transition: color 0.2s; }
   .btn-secondary:hover { color: var(--blue); }
-
-  .hero-right {
-    position: relative;
-    display: flex; align-items: center; justify-content: center;
-    overflow: hidden;
-  }
-  .hero-bg-shape {
-    position: absolute; inset: 0;
-    background: var(--blue);
-    clip-path: polygon(12% 0%, 100% 0%, 100% 100%, 0% 100%);
-  }
-  .hero-geo {
-    position: absolute;
-    background: var(--amber);
-    width: 160px; height: 160px;
-    top: -40px; right: -40px;
-    transform: rotate(20deg);
-    opacity: 0.85;
-    animation: float 6s ease-in-out infinite;
-  }
-  .hero-geo2 {
-    position: absolute;
-    background: var(--green);
-    width: 90px; height: 90px;
-    border-radius: 50%;
-    bottom: 60px; right: 60px;
-    opacity: 0.7;
-    animation: float 8s ease-in-out infinite reverse;
-  }
-  .hero-geo3 {
-    position: absolute;
-    border: 2px solid rgba(255,255,255,0.2);
-    width: 200px; height: 200px;
-    border-radius: 50%;
-    bottom: -60px; left: 30px;
-    animation: float 10s ease-in-out infinite;
-  }
-  @keyframes float {
-    0%, 100% { transform: translateY(0) rotate(20deg); }
-    50% { transform: translateY(-16px) rotate(20deg); }
-  }
-  .hero-card {
-    position: relative; z-index: 2;
-    background: rgba(255,255,255,0.1);
-    backdrop-filter: blur(10px);
-    border: 1px solid rgba(255,255,255,0.2);
-    border-radius: 16px;
-    padding: 36px;
-    width: 340px;
-    animation: fadeUp 0.8s 0.3s ease both;
-  }
-  .hero-card-avatar {
-    width: 64px; height: 64px; border-radius: 50%;
-    background: var(--amber);
-    display: flex; align-items: center; justify-content: center;
-    font-family: 'Clash Display', sans-serif;
-    font-size: 22px; font-weight: 800; color: white;
-    margin-bottom: 16px;
-  }
-  .hero-card h3 {
-    font-family: 'Clash Display', sans-serif;
-    font-size: 20px; font-weight: 700; color: white;
-    margin-bottom: 4px;
-  }
-  .hero-card p {
-    font-size: 13px; color: rgba(255,255,255,0.65);
-    margin-bottom: 20px;
-  }
-  .hero-card-stats {
-    display: grid; grid-template-columns: 1fr 1fr;
-    gap: 12px;
-  }
-  .stat-box {
-    background: rgba(255,255,255,0.08);
-    border-radius: 8px; padding: 12px;
-    border: 1px solid rgba(255,255,255,0.1);
-  }
-  .stat-num {
-    font-family: 'Clash Display', sans-serif;
-    font-size: 24px; font-weight: 800; color: white;
-  }
-  .stat-label {
-    font-size: 11px; color: rgba(255,255,255,0.55);
-    margin-top: 2px; line-height: 1.3;
-  }
+  .hero-right { position: relative; display: flex; align-items: center; justify-content: center; overflow: hidden; }
+  .hero-bg-shape { position: absolute; inset: 0; background: var(--blue); clip-path: polygon(12% 0%, 100% 0%, 100% 100%, 0% 100%); }
+  .hero-geo { position: absolute; background: var(--amber); width: 160px; height: 160px; top: -40px; right: -40px; transform: rotate(20deg); opacity: 0.85; animation: float 6s ease-in-out infinite; }
+  .hero-geo2 { position: absolute; background: var(--green); width: 90px; height: 90px; border-radius: 50%; bottom: 60px; right: 60px; opacity: 0.7; animation: float 8s ease-in-out infinite reverse; }
+  .hero-geo3 { position: absolute; border: 2px solid rgba(255,255,255,0.2); width: 200px; height: 200px; border-radius: 50%; bottom: -60px; left: 30px; animation: float 10s ease-in-out infinite; }
+  @keyframes float { 0%, 100% { transform: translateY(0) rotate(20deg); } 50% { transform: translateY(-16px) rotate(20deg); } }
+  .hero-card { position: relative; z-index: 2; background: rgba(255,255,255,0.1); backdrop-filter: blur(10px); border: 1px solid rgba(255,255,255,0.2); border-radius: 16px; padding: 28px; width: 320px; animation: fadeUp 0.8s 0.3s ease both; }
+  .hero-card-avatar { width: 72px; height: 72px; border-radius: 50%; overflow: hidden; margin-bottom: 16px; border: 3px solid var(--amber); flex-shrink: 0; }
+  .hero-card-avatar img { width: 100%; height: 100%; object-fit: cover; }
+  .hero-card h3 { font-family: 'Clash Display', sans-serif; font-size: 20px; font-weight: 700; color: white; margin-bottom: 4px; }
+  .hero-card p { font-size: 13px; color: rgba(255,255,255,0.65); margin-bottom: 20px; }
+  .hero-card-stats { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+  .stat-box { background: rgba(255,255,255,0.08); border-radius: 8px; padding: 12px; border: 1px solid rgba(255,255,255,0.1); }
+  .stat-num { font-family: 'Clash Display', sans-serif; font-size: 22px; font-weight: 700; color: white; }
+  .stat-label { font-size: 10px; color: rgba(255,255,255,0.55); margin-top: 2px; line-height: 1.3; }
   .stat-box.amber .stat-num { color: var(--amber-light); }
   .stat-box.green .stat-num { color: var(--green-light); }
+  @keyframes fadeUp { from { opacity: 0; transform: translateY(24px); } to { opacity: 1; transform: translateY(0); } }
 
-  @keyframes fadeUp {
-    from { opacity: 0; transform: translateY(24px); }
-    to { opacity: 1; transform: translateY(0); }
-  }
-
-  /* ── SECTIONS ── */
+  /* SECTIONS */
   section { padding: 100px 72px; }
   section:nth-child(even) { background: white; }
+  .section-label { font-size: 11px; font-weight: 500; letter-spacing: 0.12em; text-transform: uppercase; color: var(--blue); margin-bottom: 12px; display: flex; align-items: center; gap: 10px; }
+  .section-label::before { content: ''; display: block; width: 28px; height: 2px; background: var(--amber); }
+  .section-title { font-family: 'Clash Display', sans-serif; font-size: clamp(32px, 3.5vw, 48px); font-weight: 700; letter-spacing: -0.02em; color: var(--text-dark); line-height: 1.1; margin-bottom: 16px; }
+  .section-sub { font-size: 17px; color: var(--text-mid); font-weight: 300; line-height: 1.7; max-width: 560px; margin-bottom: 60px; }
 
-  .section-label {
-    font-size: 11px; font-weight: 500; letter-spacing: 0.12em;
-    text-transform: uppercase; color: var(--blue);
-    margin-bottom: 12px;
-    display: flex; align-items: center; gap: 10px;
-  }
-  .section-label::before {
-    content: ''; display: block;
-    width: 28px; height: 2px; background: var(--amber);
-  }
-  .section-title {
-    font-family: 'Clash Display', sans-serif;
-    font-size: clamp(32px, 3.5vw, 48px);
-    font-weight: 800; letter-spacing: -0.02em;
-    color: var(--text-dark); line-height: 1.1;
-    margin-bottom: 16px;
-  }
-  .section-sub {
-    font-size: 17px; color: var(--text-mid);
-    font-weight: 300; line-height: 1.7;
-    max-width: 560px; margin-bottom: 60px;
-  }
-
-  /* ── COMPÉTENCES ── */
-  #competences .skills-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 20px;
-  }
-  .skill-card {
-    background: white; border-radius: 12px;
-    padding: 28px; border: 1px solid var(--gray-light);
-    transition: all 0.3s; position: relative; overflow: hidden;
-  }
-  .skill-card::before {
-    content: ''; position: absolute;
-    top: 0; left: 0; right: 0; height: 3px;
-  }
+  /* COMPÉTENCES */
+  #competences .skills-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+  .skill-card { background: white; border-radius: 12px; padding: 28px; border: 1px solid var(--gray-light); transition: all 0.3s; position: relative; overflow: hidden; }
+  .skill-card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px; }
   .skill-card.blue::before { background: var(--blue); }
   .skill-card.amber::before { background: var(--amber); }
   .skill-card.green::before { background: var(--green); }
   .skill-card:hover { transform: translateY(-4px); box-shadow: 0 12px 32px rgba(24,95,165,0.12); }
-  .skill-icon {
-    width: 44px; height: 44px; border-radius: 10px;
-    display: flex; align-items: center; justify-content: center;
-    font-size: 22px; margin-bottom: 16px;
-  }
+  .skill-icon { width: 44px; height: 44px; border-radius: 10px; display: flex; align-items: center; justify-content: center; font-size: 22px; margin-bottom: 16px; }
   .skill-icon.blue { background: rgba(24,95,165,0.1); }
   .skill-icon.amber { background: rgba(186,117,23,0.1); }
   .skill-icon.green { background: rgba(29,158,117,0.1); }
-  .skill-card h3 {
-    font-family: 'Clash Display', sans-serif;
-    font-size: 17px; font-weight: 700; margin-bottom: 10px;
-    color: var(--text-dark);
-  }
+  .skill-card h3 { font-family: 'Clash Display', sans-serif; font-size: 17px; font-weight: 700; margin-bottom: 10px; color: var(--text-dark); }
   .skill-card p { font-size: 14px; color: var(--text-mid); line-height: 1.6; margin-bottom: 16px; }
   .skill-tools { display: flex; flex-wrap: wrap; gap: 6px; }
-  .tool-badge {
-    font-size: 11px; padding: 3px 10px; border-radius: 4px;
-    font-weight: 500;
-  }
+  .tool-badge { font-size: 11px; padding: 3px 10px; border-radius: 4px; font-weight: 500; }
   .tool-badge.blue { background: rgba(24,95,165,0.08); color: var(--blue); }
   .tool-badge.amber { background: rgba(186,117,23,0.08); color: var(--amber); }
   .tool-badge.green { background: rgba(29,158,117,0.08); color: var(--green); }
 
-  /* ── EXPÉRIENCES ── */
+  /* EXPÉRIENCES */
   #experiences { background: var(--off-white); }
   .exp-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
-  .exp-card {
-    background: white; border-radius: 14px;
-    padding: 36px; border: 1px solid var(--gray-light);
-    position: relative; overflow: hidden;
-    transition: all 0.3s;
-  }
+  .exp-card { background: white; border-radius: 14px; padding: 36px; border: 1px solid var(--gray-light); position: relative; overflow: hidden; transition: all 0.3s; }
   .exp-card:hover { box-shadow: 0 16px 40px rgba(24,95,165,0.1); transform: translateY(-3px); }
-  .exp-card .corner-accent {
-    position: absolute; top: 0; right: 0;
-    width: 60px; height: 60px;
-    border-radius: 0 14px 0 60px;
-  }
+  .exp-card .corner-accent { position: absolute; top: 0; right: 0; width: 60px; height: 60px; border-radius: 0 14px 0 60px; }
   .exp-card.blue .corner-accent { background: rgba(24,95,165,0.08); }
   .exp-card.amber .corner-accent { background: rgba(186,117,23,0.08); }
-  .exp-period {
-    font-size: 12px; color: var(--text-mid);
-    letter-spacing: 0.04em; margin-bottom: 12px;
-    display: flex; align-items: center; gap: 8px;
-  }
-  .exp-badge {
-    font-size: 10px; font-weight: 600; padding: 2px 8px;
-    border-radius: 4px; text-transform: uppercase; letter-spacing: 0.06em;
-  }
+  .exp-period { font-size: 12px; color: var(--text-mid); letter-spacing: 0.04em; margin-bottom: 12px; display: flex; align-items: center; gap: 8px; }
+  .exp-badge { font-size: 10px; font-weight: 600; padding: 2px 8px; border-radius: 4px; text-transform: uppercase; letter-spacing: 0.06em; }
   .exp-badge.b2b { background: rgba(24,95,165,0.1); color: var(--blue); }
   .exp-badge.b2c { background: rgba(186,117,23,0.1); color: var(--amber); }
-  .exp-card h3 {
-    font-family: 'Clash Display', sans-serif;
-    font-size: 22px; font-weight: 800; margin-bottom: 4px;
-    color: var(--text-dark);
-  }
-  .exp-role {
-    font-size: 14px; color: var(--blue); font-weight: 500; margin-bottom: 20px;
-  }
+  .exp-card h3 { font-family: 'Clash Display', sans-serif; font-size: 22px; font-weight: 700; margin-bottom: 4px; color: var(--text-dark); }
+  .exp-role { font-size: 14px; color: var(--blue); font-weight: 500; margin-bottom: 20px; }
   .exp-missions { list-style: none; display: flex; flex-direction: column; gap: 10px; }
-  .exp-missions li {
-    font-size: 14px; color: var(--text-mid); line-height: 1.5;
-    display: flex; gap: 10px; align-items: flex-start;
-  }
-  .exp-missions li::before {
-    content: '→'; color: var(--amber); font-weight: 600;
-    flex-shrink: 0; margin-top: 0px;
-  }
+  .exp-missions li { font-size: 14px; color: var(--text-mid); line-height: 1.5; display: flex; gap: 10px; align-items: flex-start; }
+  .exp-missions li::before { content: '→'; color: var(--amber); font-weight: 600; flex-shrink: 0; }
   .exp-tags { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 20px; padding-top: 20px; border-top: 1px solid var(--gray-light); }
 
-  /* ── OUTILS ── */
+  /* OUTILS */
   #outils { background: white; }
-  .tools-grid {
-    display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px;
-  }
-  .tool-card {
-    border: 1px solid var(--gray-light); border-radius: 10px;
-    padding: 20px 16px; text-align: center;
-    transition: all 0.25s; background: var(--off-white);
-    cursor: default;
-  }
+  .tools-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; }
+  .tool-card { border: 1px solid var(--gray-light); border-radius: 10px; padding: 20px 16px; text-align: center; transition: all 0.25s; background: var(--off-white); }
   .tool-card:hover { border-color: var(--blue); background: white; transform: translateY(-2px); }
-  .tool-card .tool-logo {
-    font-size: 28px; margin-bottom: 8px; display: block;
-  }
-  .tool-card .tool-name {
-    font-size: 13px; font-weight: 500; color: var(--text-dark); margin-bottom: 4px;
-  }
-  .tool-card .tool-cat {
-    font-size: 11px; color: var(--text-mid);
-  }
+  .tool-card .tool-logo { font-size: 28px; margin-bottom: 8px; display: block; }
+  .tool-card .tool-name { font-size: 13px; font-weight: 500; color: var(--text-dark); margin-bottom: 4px; }
+  .tool-card .tool-cat { font-size: 11px; color: var(--text-mid); }
 
-  /* ── FORMATION ── */
-  #formation { background: var(--off-white); }
-  .formation-card {
-    background: white; border-radius: 14px;
-    padding: 36px; border: 1px solid var(--gray-light);
-    display: flex; gap: 28px; align-items: flex-start;
-    max-width: 780px;
-    transition: box-shadow 0.3s;
-  }
-  .formation-card:hover { box-shadow: 0 12px 32px rgba(24,95,165,0.1); }
-  .formation-icon {
-    width: 56px; height: 56px; border-radius: 12px;
-    background: var(--blue); flex-shrink: 0;
-    display: flex; align-items: center; justify-content: center;
-    font-size: 26px;
-  }
-  .formation-card h3 {
-    font-family: 'Clash Display', sans-serif;
-    font-size: 20px; font-weight: 700; color: var(--text-dark); margin-bottom: 4px;
-  }
-  .formation-card .school { font-size: 14px; color: var(--blue); font-weight: 500; margin-bottom: 8px; }
-  .formation-card .year { font-size: 12px; color: var(--text-mid); margin-bottom: 14px; }
+  /* PROJETS */
+  #projets { background: var(--off-white); }
+  .projets-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 28px; }
+  .projet-card { background: white; border-radius: 16px; overflow: hidden; border: 1px solid var(--gray-light); transition: all 0.3s; cursor: pointer; }
+  .projet-card:hover { transform: translateY(-5px); box-shadow: 0 20px 48px rgba(24,95,165,0.14); }
+  .projet-card:hover .projet-overlay { opacity: 1; }
+  .projet-img-wrap { position: relative; height: 220px; overflow: hidden; background: #1a1a2e; }
+  .projet-img-wrap img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.4s; }
+  .projet-card:hover .projet-img-wrap img { transform: scale(1.05); }
+  .projet-overlay { position: absolute; inset: 0; background: rgba(24,95,165,0.85); display: flex; align-items: center; justify-content: center; opacity: 0; transition: opacity 0.3s; }
+  .projet-overlay span { color: white; font-size: 14px; font-weight: 500; border: 1px solid rgba(255,255,255,0.5); padding: 10px 20px; border-radius: 6px; }
+  .projet-thumbnails { display: flex; gap: 4px; padding: 8px; background: #f8f7f4; }
+  .projet-thumbnails img { width: 52px; height: 40px; object-fit: cover; border-radius: 4px; opacity: 0.7; cursor: pointer; transition: opacity 0.2s; border: 2px solid transparent; }
+  .projet-thumbnails img:hover, .projet-thumbnails img.active { opacity: 1; border-color: var(--blue); }
+  .projet-info { padding: 24px; }
+  .projet-company { font-size: 11px; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: var(--blue); margin-bottom: 8px; display: flex; align-items: center; gap: 8px; }
+  .projet-company::before { content: ''; width: 20px; height: 2px; background: var(--amber); display: block; }
+  .projet-card h3 { font-family: 'Clash Display', sans-serif; font-size: 20px; font-weight: 700; color: var(--text-dark); margin-bottom: 10px; }
+  .projet-desc { font-size: 14px; color: var(--text-mid); line-height: 1.6; margin-bottom: 16px; }
+  .projet-tags { display: flex; flex-wrap: wrap; gap: 6px; }
+
+  /* PROJET À VENIR */
+  .projet-card.coming-soon { background: linear-gradient(135deg, rgba(24,95,165,0.04), rgba(29,158,117,0.04)); border: 2px dashed var(--gray-light); display: flex; align-items: center; justify-content: center; min-height: 360px; text-align: center; cursor: default; }
+  .projet-card.coming-soon:hover { transform: none; box-shadow: none; }
+  .coming-content { padding: 40px; }
+  .coming-icon { font-size: 48px; margin-bottom: 16px; }
+  .coming-content h3 { font-family: 'Clash Display', sans-serif; font-size: 20px; font-weight: 700; color: var(--text-mid); margin-bottom: 8px; }
+  .coming-content p { font-size: 14px; color: var(--text-mid); opacity: 0.7; }
+
+  /* FORMATION */
+  #formation { background: white; }
+  .formation-card { background: var(--off-white); border-radius: 14px; padding: 28px 32px; border: 1px solid var(--gray-light); display: flex; gap: 24px; align-items: flex-start; max-width: 800px; margin-bottom: 16px; transition: box-shadow 0.3s; }
+  .formation-card:hover { box-shadow: 0 8px 24px rgba(24,95,165,0.08); }
+  .formation-icon { width: 52px; height: 52px; border-radius: 12px; background: var(--blue); flex-shrink: 0; display: flex; align-items: center; justify-content: center; font-size: 24px; }
+  .formation-card h3 { font-family: 'Clash Display', sans-serif; font-size: 18px; font-weight: 700; color: var(--text-dark); margin-bottom: 4px; }
+  .formation-card .school { font-size: 14px; color: var(--blue); font-weight: 500; margin-bottom: 6px; }
+  .formation-card .year { font-size: 12px; color: var(--text-mid); margin-bottom: 12px; }
   .formation-modules { display: flex; flex-wrap: wrap; gap: 6px; }
-
-  /* ── APPRENTISSAGE ── */
-  .learning-banner {
-    margin-top: 32px; background: linear-gradient(135deg, rgba(24,95,165,0.06), rgba(29,158,117,0.06));
-    border: 1px solid rgba(24,95,165,0.15);
-    border-radius: 12px; padding: 24px 28px;
-    display: flex; align-items: center; gap: 20px; max-width: 780px;
-  }
+  .learning-banner { margin-top: 32px; background: linear-gradient(135deg, rgba(24,95,165,0.06), rgba(29,158,117,0.06)); border: 1px solid rgba(24,95,165,0.15); border-radius: 12px; padding: 24px 28px; display: flex; align-items: center; gap: 20px; max-width: 800px; }
   .learning-icon { font-size: 32px; flex-shrink: 0; }
-  .learning-banner h4 {
-    font-family: 'Clash Display', sans-serif;
-    font-size: 16px; font-weight: 700; color: var(--text-dark); margin-bottom: 4px;
-  }
+  .learning-banner h4 { font-family: 'Clash Display', sans-serif; font-size: 16px; font-weight: 700; color: var(--text-dark); margin-bottom: 4px; }
   .learning-banner p { font-size: 14px; color: var(--text-mid); line-height: 1.5; }
   .learning-progress { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 12px; }
-  .progress-item {
-    font-size: 12px; padding: 4px 12px; border-radius: 20px;
-    background: rgba(24,95,165,0.08); color: var(--blue); font-weight: 500;
-    display: flex; align-items: center; gap: 5px;
-  }
+  .progress-item { font-size: 12px; padding: 4px 12px; border-radius: 20px; background: rgba(24,95,165,0.08); color: var(--blue); font-weight: 500; display: flex; align-items: center; gap: 5px; }
   .progress-item::before { content: '⚡'; font-size: 10px; }
 
-  /* ── CONTACT ── */
-  #contact {
-    background: var(--blue);
-    color: white; text-align: center;
-    padding: 100px 72px;
-  }
+  /* CONTACT */
+  #contact { background: var(--blue); color: white; text-align: center; padding: 100px 72px; }
   #contact .section-label { color: rgba(255,255,255,0.6); justify-content: center; }
   #contact .section-label::before { background: var(--amber); }
   #contact .section-title { color: white; margin-left: auto; margin-right: auto; max-width: 600px; }
   #contact .section-sub { color: rgba(255,255,255,0.65); margin: 0 auto 48px; }
   .contact-actions { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; }
-  .btn-white {
-    background: white; color: var(--blue);
-    padding: 14px 28px; border-radius: 8px;
-    font-size: 15px; font-weight: 500;
-    text-decoration: none; transition: all 0.2s;
-    display: inline-flex; align-items: center; gap: 8px;
-  }
+  .btn-white { background: white; color: var(--blue); padding: 14px 28px; border-radius: 8px; font-size: 15px; font-weight: 500; text-decoration: none; transition: all 0.2s; display: inline-flex; align-items: center; gap: 8px; }
   .btn-white:hover { background: var(--off-white); transform: translateY(-1px); }
-  .btn-outline-white {
-    background: transparent; color: white;
-    padding: 14px 28px; border-radius: 8px;
-    font-size: 15px; font-weight: 500;
-    text-decoration: none; border: 1px solid rgba(255,255,255,0.35);
-    display: inline-flex; align-items: center; gap: 8px;
-    transition: all 0.2s;
-  }
+  .btn-outline-white { background: transparent; color: white; padding: 14px 28px; border-radius: 8px; font-size: 15px; font-weight: 500; text-decoration: none; border: 1px solid rgba(255,255,255,0.35); display: inline-flex; align-items: center; gap: 8px; transition: all 0.2s; }
   .btn-outline-white:hover { background: rgba(255,255,255,0.1); transform: translateY(-1px); }
 
-  /* ── FOOTER ── */
-  footer {
-    background: var(--blue-dark); color: rgba(255,255,255,0.45);
-    text-align: center; padding: 24px;
-    font-size: 13px;
-  }
+  /* FOOTER */
+  footer { background: var(--blue-dark); color: rgba(255,255,255,0.45); text-align: center; padding: 24px; font-size: 13px; }
   footer span { color: var(--amber-light); }
 
-  /* ── RESPONSIVE ── */
+  /* RESPONSIVE */
   @media (max-width: 900px) {
     nav { padding: 16px 24px; }
     .nav-links { display: none; }
@@ -482,6 +196,7 @@
     #competences .skills-grid { grid-template-columns: 1fr; }
     .exp-grid { grid-template-columns: 1fr; }
     .tools-grid { grid-template-columns: repeat(2, 1fr); }
+    .projets-grid { grid-template-columns: 1fr; }
     #contact { padding: 72px 24px; }
   }
 </style>
@@ -494,7 +209,7 @@
   <ul class="nav-links">
     <li><a href="#competences">Compétences</a></li>
     <li><a href="#experiences">Expériences</a></li>
-    <li><a href="#outils">Outils</a></li>
+    <li><a href="#projets">Projets</a></li>
     <li><a href="#formation">Formation</a></li>
   </ul>
   <a href="#contact" class="nav-cta">Me contacter</a>
@@ -509,20 +224,18 @@
       <span class="highlight">Digital</span><br>
       B2B & B2C
     </h1>
-    <p class="hero-desc">
-      Spécialiste emailing, CRM et événementiel live. Je crée des campagnes qui engagent, des expériences qui marquent, et des données qui parlent.
-    </p>
+    <p class="hero-desc">Spécialiste emailing, CRM et événementiel live. Je crée des campagnes qui engagent, des expériences qui marquent, et des données qui parlent.</p>
     <div class="hero-tags">
       <span class="tag tag-blue">Emailing</span>
       <span class="tag tag-blue">CRM</span>
       <span class="tag tag-amber">Événementiel Live</span>
-      <span class="tag tag-amber">CMS</span>
+      <span class="tag tag-amber">Marketing Automation</span>
       <span class="tag tag-green">Réseaux Sociaux</span>
       <span class="tag tag-green">Reporting</span>
     </div>
     <div class="hero-actions">
-      <a href="#experiences" class="btn-primary">Voir mes expériences →</a>
-      <a href="#contact" class="btn-secondary">Me contacter ↗</a>
+      <a href="#projets" class="btn-primary">Voir mes projets →</a>
+      <a href="https://raw.githubusercontent.com/merlinbrgg-byte/Portfolio-Merlin/main/images/CV BOURGOIN Merlin Portfolio.pdf" target="_blank" class="btn-secondary">📄 Télécharger mon CV ↗</a>
     </div>
   </div>
   <div class="hero-right">
@@ -531,7 +244,9 @@
     <div class="hero-geo2"></div>
     <div class="hero-geo3"></div>
     <div class="hero-card">
-      <div class="hero-card-avatar">MB</div>
+      <div class="hero-card-avatar">
+        <img src="https://raw.githubusercontent.com/merlinbrgg-byte/Portfolio-Merlin/main/images/IMG_5124.jpg" alt="Merlin Bourgoin">
+      </div>
       <h3>Merlin Bourgoin</h3>
       <p>Marketing Digital · CRM · Événementiel</p>
       <div class="hero-card-stats">
@@ -545,11 +260,11 @@
         </div>
         <div class="stat-box">
           <div class="stat-num">B2B</div>
-          <div class="stat-label">Secteur médical & industrie</div>
+          <div class="stat-label">Secteur médical</div>
         </div>
         <div class="stat-box">
           <div class="stat-num">B2C</div>
-          <div class="stat-label">E-commerce & retail</div>
+          <div class="stat-label">E-commerce retail</div>
         </div>
       </div>
     </div>
@@ -567,20 +282,21 @@
       <h3>Emailing & CRM</h3>
       <p>Conception et pilotage de campagnes d'emailing end-to-end : segmentation, scénarisation, A/B testing, analyse des performances.</p>
       <div class="skill-tools">
+        <span class="tool-badge blue">Selligent</span>
         <span class="tool-badge blue">Pardot</span>
         <span class="tool-badge blue">HubSpot</span>
         <span class="tool-badge blue">Salesforce</span>
-        <span class="tool-badge blue">Dartagnant</span>
       </div>
     </div>
     <div class="skill-card amber">
-      <div class="skill-icon amber">🌐</div>
+      <div class="skill-icon amber">🤖</div>
       <h3>Marketing Automation</h3>
       <p>Gestion de plateformes d'automation omnicanale : création de parcours clients, personnalisation des contenus et déploiement de campagnes multicanales.</p>
       <div class="skill-tools">
         <span class="tool-badge amber">Selligent</span>
-        <span class="tool-badge amber">Omnicanal</span>
-        <span class="tool-badge amber">Parcours client</span>
+        <span class="tool-badge amber">Workflows</span>
+        <span class="tool-badge amber">Nurturing</span>
+        <span class="tool-badge amber">Segmentation</span>
       </div>
     </div>
     <div class="skill-card green">
@@ -588,9 +304,9 @@
       <h3>Analyse & Reporting</h3>
       <p>Suivi des KPIs, analyse des statistiques de campagnes, contribution au calcul du ROI et restitution des résultats aux équipes.</p>
       <div class="skill-tools">
-        <span class="tool-badge green">KPIs</span>
+        <span class="tool-badge green">GA4</span>
+        <span class="tool-badge green">Looker</span>
         <span class="tool-badge green">ROI</span>
-        <span class="tool-badge green">Stats</span>
         <span class="tool-badge green">Reporting</span>
       </div>
     </div>
@@ -605,23 +321,23 @@
       </div>
     </div>
     <div class="skill-card amber">
-      <div class="skill-icon amber">📱</div>
-      <h3>Réseaux Sociaux</h3>
-      <p>Création et planification de posts, gestion de la présence en ligne, cohérence de la marque et engagement de la communauté.</p>
+      <div class="skill-icon amber">🎨</div>
+      <h3>Création Visuelle</h3>
+      <p>Conception de supports de communication : bannières web, visuels réseaux sociaux, templates emailing et supports d'opérations commerciales.</p>
       <div class="skill-tools">
-        <span class="tool-badge amber">LinkedIn</span>
-        <span class="tool-badge amber">Instagram</span>
-        <span class="tool-badge amber">Community</span>
+        <span class="tool-badge amber">Photoshop</span>
+        <span class="tool-badge amber">Illustrator</span>
+        <span class="tool-badge amber">Dartagnant</span>
       </div>
     </div>
     <div class="skill-card green">
-      <div class="skill-icon green">🤖</div>
-      <h3>IA & Automatisation</h3>
-      <p>En apprentissage actif sur les outils d'automatisation marketing et d'intelligence artificielle pour optimiser les workflows.</p>
+      <div class="skill-icon green">📱</div>
+      <h3>Réseaux Sociaux</h3>
+      <p>Création et planification de posts, gestion de la présence en ligne, cohérence de la marque et engagement de la communauté.</p>
       <div class="skill-tools">
-        <span class="tool-badge green">En formation</span>
-        <span class="tool-badge green">Make / Zapier</span>
-        <span class="tool-badge green">IA générative</span>
+        <span class="tool-badge green">LinkedIn</span>
+        <span class="tool-badge green">Instagram</span>
+        <span class="tool-badge green">Community</span>
       </div>
     </div>
   </div>
@@ -635,45 +351,39 @@
   <div class="exp-grid">
     <div class="exp-card blue">
       <div class="corner-accent"></div>
-      <div class="exp-period">
-        2022 – 2023 · Alternance
-        <span class="exp-badge b2b">B2B</span>
-      </div>
+      <div class="exp-period">2022 – 2023 · Alternance <span class="exp-badge b2b">B2B</span></div>
       <h3>Karl Storz</h3>
       <div class="exp-role">Chargé de Marketing Digital</div>
       <ul class="exp-missions">
-        <li>Organisation et gestion de lives chirurgicaux en direct, retransmis à une audience de professionnels médicaux</li>
+        <li>Gestion de campagnes d'invitation aux webinaires médicaux : segmentation et envoi à des bases de 100 à 1 000 professionnels de santé selon la spécialité</li>
+        <li>Supervision de plus d'une dizaine de webinaires en collaboration avec des professionnels de santé</li>
+        <li>Création des supports visuels de communication (Suite Adobe)</li>
         <li>Coordination logistique des événements : planning, intervenants, équipements techniques</li>
-        <li>Communication avant et après événement : emailing, posts réseaux sociaux, newsletters</li>
-        <li>Gestion du CRM Salesforce et campagnes via Pardot</li>
         <li>Analyse des stats de campagnes et contribution aux reportings ROI</li>
       </ul>
       <div class="exp-tags">
         <span class="tool-badge blue">Salesforce</span>
         <span class="tool-badge blue">Pardot</span>
-        <span class="tool-badge blue">Événementiel</span>
+        <span class="tool-badge blue">Suite Adobe</span>
         <span class="tool-badge blue">B2B Médical</span>
       </div>
     </div>
     <div class="exp-card amber">
       <div class="corner-accent"></div>
-      <div class="exp-period">
-        2023 – 2025 · Alternance
-        <span class="exp-badge b2c">B2C</span>
-      </div>
-      <h3>Sobrico</h3>
-      <div class="exp-role">Chargé de Marketing & Communication</div>
+      <div class="exp-period">2023 – 2025 · Alternance <span class="exp-badge b2c">B2C</span></div>
+      <h3>SoBrico</h3>
+      <div class="exp-role">Assistant Marketing Digital</div>
       <ul class="exp-missions">
-        <li>Pilotage des campagnes d'emailing (60% du temps) : création, segmentation, envoi et analyse</li>
-        <li>Gestion et mise à jour du contenu digital via Selligent Marketing Cloud</li>
-        <li>Animation des réseaux sociaux et création de visuels pour les posts</li>
-        <li>Utilisation de Selligent pour le suivi des leads et l'automatisation marketing</li>
-        <li>Analyse des statistiques et reporting régulier des performances</li>
+        <li>Gestion et segmentation d'une base de données de prospects pour l'envoi de campagnes emailings</li>
+        <li>Création et envoi de 2 à 3 newsletters hebdomadaires avec suivi de la hausse des taux d'ouverture et des CTA</li>
+        <li>Pilotage des campagnes commerciales digitales : création des événements sur le site web, ciblages et segmentations des profils client</li>
+        <li>Mise en place de scénarios d'automation sur Selligent : workflows, nurturing et segmentation avancée</li>
+        <li>Chargé de la sélection et du déploiement des opérations commerciales (Suite Adobe / CRM)</li>
       </ul>
       <div class="exp-tags">
         <span class="tool-badge amber">Selligent</span>
         <span class="tool-badge amber">Marketing Automation</span>
-        <span class="tool-badge amber">Dartagnant</span>
+        <span class="tool-badge amber">Suite Adobe</span>
         <span class="tool-badge amber">B2C Retail</span>
       </div>
     </div>
@@ -686,46 +396,145 @@
   <h2 class="section-title">Outils maîtrisés</h2>
   <p class="section-sub">Des outils professionnels utilisés en conditions réelles, sur des missions variées en B2B et B2C.</p>
   <div class="tools-grid">
-    <div class="tool-card">
-      <span class="tool-logo">☁️</span>
-      <div class="tool-name">Salesforce</div>
-      <div class="tool-cat">CRM</div>
+    <div class="tool-card"><span class="tool-logo">☁️</span><div class="tool-name">Salesforce</div><div class="tool-cat">CRM</div></div>
+    <div class="tool-card"><span class="tool-logo">🟠</span><div class="tool-name">Selligent</div><div class="tool-cat">Marketing Automation</div></div>
+    <div class="tool-card"><span class="tool-logo">🔷</span><div class="tool-name">Pardot</div><div class="tool-cat">Marketing Automation</div></div>
+    <div class="tool-card"><span class="tool-logo">🟡</span><div class="tool-name">HubSpot</div><div class="tool-cat">CRM / Marketing</div></div>
+    <div class="tool-card"><span class="tool-logo">🎨</span><div class="tool-name">Suite Adobe</div><div class="tool-cat">Photoshop · Illustrator</div></div>
+    <div class="tool-card"><span class="tool-logo">🗡️</span><div class="tool-name">Dartagnant</div><div class="tool-cat">Email Design</div></div>
+    <div class="tool-card"><span class="tool-logo">📊</span><div class="tool-name">GA4 / Looker</div><div class="tool-cat">Analytics</div></div>
+    <div class="tool-card"><span class="tool-logo">⚡</span><div class="tool-name">Make / Zapier</div><div class="tool-cat">Automatisation · En cours</div></div>
+  </div>
+</section>
+
+<!-- PROJETS -->
+<section id="projets">
+  <div class="section-label">Mes réalisations</div>
+  <h2 class="section-title">Projets</h2>
+  <p class="section-sub">Des opérations marketing conçues et déployées en conditions réelles, de la création visuelle à l'envoi et au suivi des performances.</p>
+  <div class="projets-grid">
+
+    <!-- Projet 1 — Opération 10% Mai -->
+    <div class="projet-card">
+      <div class="projet-img-wrap">
+        <img id="img-mai" src="https://raw.githubusercontent.com/merlinbrgg-byte/Portfolio-Merlin/main/images/10PC Juin.png" alt="Opération 10% Mai">
+        <div class="projet-overlay"><span>Voir le projet</span></div>
+      </div>
+      <div class="projet-thumbnails">
+        <img src="https://raw.githubusercontent.com/merlinbrgg-byte/Portfolio-Merlin/main/images/10PC Juin.png" class="active" onclick="switchImg('img-mai', this, 'https://raw.githubusercontent.com/merlinbrgg-byte/Portfolio-Merlin/main/images/10PC Juin.png')" alt="">
+        <img src="https://raw.githubusercontent.com/merlinbrgg-byte/Portfolio-Merlin/main/images/10PC Juin (1).png" onclick="switchImg('img-mai', this, 'https://raw.githubusercontent.com/merlinbrgg-byte/Portfolio-Merlin/main/images/10PC Juin (1).png')" alt="">
+        <img src="https://raw.githubusercontent.com/merlinbrgg-byte/Portfolio-Merlin/main/images/10PC Juin (2).png" onclick="switchImg('img-mai', this, 'https://raw.githubusercontent.com/merlinbrgg-byte/Portfolio-Merlin/main/images/10PC Juin (2).png')" alt="">
+        <img src="https://raw.githubusercontent.com/merlinbrgg-byte/Portfolio-Merlin/main/images/10PC Juin (3).png" onclick="switchImg('img-mai', this, 'https://raw.githubusercontent.com/merlinbrgg-byte/Portfolio-Merlin/main/images/10PC Juin (3).png')" alt="">
+        <img src="https://raw.githubusercontent.com/merlinbrgg-byte/Portfolio-Merlin/main/images/Vignette-page-produit-20pcjuin-v2.png" onclick="switchImg('img-mai', this, 'https://raw.githubusercontent.com/merlinbrgg-byte/Portfolio-Merlin/main/images/Vignette-page-produit-20pcjuin-v2.png')" alt="">
+      </div>
+      <div class="projet-info">
+        <div class="projet-company">SoBrico · 2024</div>
+        <h3>Opération Commerciale — 10% Mai</h3>
+        <p class="projet-desc">Conception et déclinaison d'une opération promotionnelle en multi-formats : story, carré, bannière web et visuel newsletter. Déploiement via emailing segmenté sur Selligent.</p>
+        <div class="projet-tags">
+          <span class="tool-badge amber">Suite Adobe</span>
+          <span class="tool-badge amber">Selligent</span>
+          <span class="tool-badge amber">Multi-formats</span>
+          <span class="tool-badge amber">B2C</span>
+        </div>
+      </div>
     </div>
-    <div class="tool-card">
-      <span class="tool-logo">🟠</span>
-      <div class="tool-name">HubSpot</div>
-      <div class="tool-cat">CRM / Marketing</div>
+
+    <!-- Projet 2 — Offre Week-end Février -->
+    <div class="projet-card">
+      <div class="projet-img-wrap">
+        <img id="img-weekend" src="https://raw.githubusercontent.com/merlinbrgg-byte/Portfolio-Merlin/main/images/Promo-week-end-9-Février---NL.png" alt="Offre Week-end Février">
+        <div class="projet-overlay"><span>Voir le projet</span></div>
+      </div>
+      <div class="projet-thumbnails">
+        <img src="https://raw.githubusercontent.com/merlinbrgg-byte/Portfolio-Merlin/main/images/Promo-week-end-9-Février---NL.png" class="active" onclick="switchImg('img-weekend', this, 'https://raw.githubusercontent.com/merlinbrgg-byte/Portfolio-Merlin/main/images/Promo-week-end-9-Février---NL.png')" alt="">
+        <img src="https://raw.githubusercontent.com/merlinbrgg-byte/Portfolio-Merlin/main/images/Promo-week-end-9-Février---Ban-Home-NL.png" onclick="switchImg('img-weekend', this, 'https://raw.githubusercontent.com/merlinbrgg-byte/Portfolio-Merlin/main/images/Promo-week-end-9-Février---Ban-Home-NL.png')" alt="">
+        <img src="https://raw.githubusercontent.com/merlinbrgg-byte/Portfolio-Merlin/main/images/Promo-week-end-9-Février---ban-site-web.png" onclick="switchImg('img-weekend', this, 'https://raw.githubusercontent.com/merlinbrgg-byte/Portfolio-Merlin/main/images/Promo-week-end-9-Février---ban-site-web.png')" alt="">
+        <img src="https://raw.githubusercontent.com/merlinbrgg-byte/Portfolio-Merlin/main/images/Promo_week-end_9-fevrier-INSTA (1).png" onclick="switchImg('img-weekend', this, 'https://raw.githubusercontent.com/merlinbrgg-byte/Portfolio-Merlin/main/images/Promo_week-end_9-fevrier-INSTA (1).png')" alt="">
+        <img src="https://raw.githubusercontent.com/merlinbrgg-byte/Portfolio-Merlin/main/images/Promo-week-end-9-Février---pop-in.png" onclick="switchImg('img-weekend', this, 'https://raw.githubusercontent.com/merlinbrgg-byte/Portfolio-Merlin/main/images/Promo-week-end-9-Février---pop-in.png')" alt="">
+      </div>
+      <div class="projet-info">
+        <div class="projet-company">SoBrico · Février 2024</div>
+        <h3>Offre Spéciale Week-end</h3>
+        <p class="projet-desc">Opération promotionnelle palier d'achat déclinée sur tous les canaux : newsletter, bannière homepage, bannière site web, pop-in et posts Instagram.</p>
+        <div class="projet-tags">
+          <span class="tool-badge blue">Suite Adobe</span>
+          <span class="tool-badge blue">Multicanal</span>
+          <span class="tool-badge blue">Newsletter</span>
+          <span class="tool-badge blue">Social Media</span>
+        </div>
+      </div>
     </div>
-    <div class="tool-card">
-      <span class="tool-logo">🔷</span>
-      <div class="tool-name">Pardot</div>
-      <div class="tool-cat">Marketing Automation</div>
+
+    <!-- Projet 3 — Chasse aux Lapins Pâques -->
+    <div class="projet-card">
+      <div class="projet-img-wrap">
+        <img id="img-paques" src="https://raw.githubusercontent.com/merlinbrgg-byte/Portfolio-Merlin/main/images/Ban pâques - 2.png" alt="Chasse aux Lapins">
+        <div class="projet-overlay"><span>Voir le projet</span></div>
+      </div>
+      <div class="projet-thumbnails">
+        <img src="https://raw.githubusercontent.com/merlinbrgg-byte/Portfolio-Merlin/main/images/Ban pâques - 2.png" class="active" onclick="switchImg('img-paques', this, 'https://raw.githubusercontent.com/merlinbrgg-byte/Portfolio-Merlin/main/images/Ban pâques - 2.png')" alt="">
+        <img src="https://raw.githubusercontent.com/merlinbrgg-byte/Portfolio-Merlin/main/images/Logo_SB_Paques.png" onclick="switchImg('img-paques', this, 'https://raw.githubusercontent.com/merlinbrgg-byte/Portfolio-Merlin/main/images/Logo_SB_Paques.png')" alt="">
+        <img src="https://raw.githubusercontent.com/merlinbrgg-byte/Portfolio-Merlin/main/images/Lapin coté.png" onclick="switchImg('img-paques', this, 'https://raw.githubusercontent.com/merlinbrgg-byte/Portfolio-Merlin/main/images/Lapin coté.png')" alt="">
+        <img src="https://raw.githubusercontent.com/merlinbrgg-byte/Portfolio-Merlin/main/images/Lapin dans son trou.png" onclick="switchImg('img-paques', this, 'https://raw.githubusercontent.com/merlinbrgg-byte/Portfolio-Merlin/main/images/Lapin dans son trou.png')" alt="">
+        <img src="https://raw.githubusercontent.com/merlinbrgg-byte/Portfolio-Merlin/main/images/Lapin oreille.png" onclick="switchImg('img-paques', this, 'https://raw.githubusercontent.com/merlinbrgg-byte/Portfolio-Merlin/main/images/Lapin oreille.png')" alt="">
+      </div>
+      <div class="projet-info">
+        <div class="projet-company">SoBrico · Pâques 2024</div>
+        <h3>La Chass'Lapins — Opération Gamifiée</h3>
+        <p class="projet-desc">Opération événementielle interactive : chasse aux lapins cachés sur le site avec codes promo à gagner. Conception de l'univers visuel complet et des visuels réseaux sociaux.</p>
+        <div class="projet-tags">
+          <span class="tool-badge green">Gamification</span>
+          <span class="tool-badge green">Suite Adobe</span>
+          <span class="tool-badge green">Social Media</span>
+          <span class="tool-badge green">Événementiel</span>
+        </div>
+      </div>
     </div>
-    <div class="tool-card">
-      <span class="tool-logo">🗡️</span>
-      <div class="tool-name">Dartagnant</div>
-      <div class="tool-cat">Email Design</div>
+
+    <!-- Projet 4 — Soldes Été -->
+    <div class="projet-card">
+      <div class="projet-img-wrap">
+        <img id="img-soldes" src="https://raw.githubusercontent.com/merlinbrgg-byte/Portfolio-Merlin/main/images/SB-solde ete-NL-640x300.png" alt="Soldes Été">
+        <div class="projet-overlay"><span>Voir le projet</span></div>
+      </div>
+      <div class="projet-thumbnails">
+        <img src="https://raw.githubusercontent.com/merlinbrgg-byte/Portfolio-Merlin/main/images/SB-solde ete-NL-640x300.png" class="active" onclick="switchImg('img-soldes', this, 'https://raw.githubusercontent.com/merlinbrgg-byte/Portfolio-Merlin/main/images/SB-solde ete-NL-640x300.png')" alt="">
+        <img src="https://raw.githubusercontent.com/merlinbrgg-byte/Portfolio-Merlin/main/images/SB-solde ete-NL-320x320.png" onclick="switchImg('img-soldes', this, 'https://raw.githubusercontent.com/merlinbrgg-byte/Portfolio-Merlin/main/images/SB-solde ete-NL-320x320.png')" alt="">
+        <img src="https://raw.githubusercontent.com/merlinbrgg-byte/Portfolio-Merlin/main/images/SB-solde ete-NL-320x320 copie.png" onclick="switchImg('img-soldes', this, 'https://raw.githubusercontent.com/merlinbrgg-byte/Portfolio-Merlin/main/images/SB-solde ete-NL-320x320 copie.png')" alt="">
+        <img src="https://raw.githubusercontent.com/merlinbrgg-byte/Portfolio-Merlin/main/images/SB-solde ete-NL-320x320 copie 2.png" onclick="switchImg('img-soldes', this, 'https://raw.githubusercontent.com/merlinbrgg-byte/Portfolio-Merlin/main/images/SB-solde ete-NL-320x320 copie 2.png')" alt="">
+      </div>
+      <div class="projet-info">
+        <div class="projet-company">SoBrico · Été 2024</div>
+        <h3>Soldes Été — Déclinaisons par Univers</h3>
+        <p class="projet-desc">Conception des visuels soldes déclinés par univers produit (jardin, salle de bain, chauffage, outillage...) en différents formats pour newsletter et site web.</p>
+        <div class="projet-tags">
+          <span class="tool-badge amber">Suite Adobe</span>
+          <span class="tool-badge amber">Multi-univers</span>
+          <span class="tool-badge amber">Newsletter</span>
+          <span class="tool-badge amber">Soldes</span>
+        </div>
+      </div>
     </div>
-    <div class="tool-card">
-      <span class="tool-logo">🌐</span>
-      <div class="tool-name">WordPress</div>
-      <div class="tool-cat">CMS</div>
+
+    <!-- Projet 5 — Karl Storz (à venir) -->
+    <div class="projet-card coming-soon">
+      <div class="coming-content">
+        <div class="coming-icon">🔬</div>
+        <h3>Karl Storz — Webinaires Médicaux</h3>
+        <p>Visuels d'invitation aux webinaires chirurgicaux · Bientôt disponible</p>
+      </div>
     </div>
-    <div class="tool-card">
-      <span class="tool-logo">📊</span>
-      <div class="tool-name">Google Analytics</div>
-      <div class="tool-cat">Analytics</div>
+
+    <!-- Projet 6 — Projets personnels -->
+    <div class="projet-card coming-soon">
+      <div class="coming-content">
+        <div class="coming-icon">🚀</div>
+        <h3>Projets personnels</h3>
+        <p>En cours de construction · Bientôt disponible</p>
+      </div>
     </div>
-    <div class="tool-card">
-      <span class="tool-logo">🔗</span>
-      <div class="tool-name">LinkedIn Ads</div>
-      <div class="tool-cat">Social Media</div>
-    </div>
-    <div class="tool-card">
-      <span class="tool-logo">⚡</span>
-      <div class="tool-name">Make / Zapier</div>
-      <div class="tool-cat">Automatisation · En cours</div>
-    </div>
+
   </div>
 </section>
 
@@ -734,7 +543,7 @@
   <div class="section-label">Mon parcours académique</div>
   <h2 class="section-title">Formation</h2>
   <p class="section-sub">Un cursus orienté pratique, en alternance, ancré dans les réalités du marketing digital actuel.</p>
-  <div class="formation-card" style="margin-bottom:16px;">
+  <div class="formation-card">
     <div class="formation-icon" style="background:var(--amber);">🎓</div>
     <div>
       <h3>BTS ERPC</h3>
@@ -747,12 +556,12 @@
       </div>
     </div>
   </div>
-  <div class="formation-card" style="margin-bottom:16px;">
+  <div class="formation-card">
     <div class="formation-icon" style="background:var(--green);">🎓</div>
     <div>
       <h3>Licence Pro ECMN</h3>
       <div class="school">E-commerce et Marketing Numérique</div>
-      <div class="year">2022 – 2023 · IUT de Vélizy (antenne de Rambouillet) · UVSQ · En alternance chez Karl Storz</div>
+      <div class="year">2022 – 2023 · IUT de Vélizy — antenne de Rambouillet · UVSQ · En alternance chez Karl Storz</div>
       <div class="formation-modules">
         <span class="tool-badge green">E-commerce</span>
         <span class="tool-badge green">Marketing numérique</span>
@@ -765,7 +574,7 @@
     <div class="formation-icon">🎓</div>
     <div>
       <h3>Master Marketing & Ventes Digital</h3>
-      <div class="school">Mention Social Media · IAE de Caen · En alternance chez Sobrico</div>
+      <div class="school">Mention Social Media · IAE de Caen · En alternance chez SoBrico</div>
       <div class="year">2023 – 2025 · Formation en alternance</div>
       <div class="formation-modules">
         <span class="tool-badge blue">Marketing Digital</span>
@@ -799,6 +608,7 @@
   <div class="contact-actions">
     <a href="mailto:merlin.brg@gmail.com" class="btn-white">✉️ M'envoyer un email</a>
     <a href="https://www.linkedin.com/in/merlin-bourgoin-47738b240/" target="_blank" class="btn-outline-white">🔗 LinkedIn</a>
+    <a href="https://raw.githubusercontent.com/merlinbrgg-byte/Portfolio-Merlin/main/images/CV BOURGOIN Merlin Portfolio.pdf" target="_blank" class="btn-outline-white">📄 Télécharger mon CV</a>
   </div>
 </section>
 
@@ -806,6 +616,15 @@
 <footer>
   <p>© 2025 <span>Merlin Bourgoin</span> — Portfolio Marketing Digital</p>
 </footer>
+
+<script>
+function switchImg(imgId, thumb, src) {
+  document.getElementById(imgId).src = src;
+  const container = thumb.parentElement;
+  container.querySelectorAll('img').forEach(t => t.classList.remove('active'));
+  thumb.classList.add('active');
+}
+</script>
 
 </body>
 </html>
