@@ -152,6 +152,22 @@
   .coming-content h3 { font-family: 'Clash Display', sans-serif; font-size: 20px; font-weight: 700; color: var(--text-mid); margin-bottom: 8px; }
   .coming-content p { font-size: 14px; color: var(--text-mid); opacity: 0.7; }
 
+  /* SÉPARATEURS ENTREPRISES */
+  .company-separator { margin: 48px 0 32px; }
+  .company-separator-inner { display: flex; align-items: center; gap: 14px; padding: 16px 24px; border-radius: 10px; width: fit-content; }
+  .company-separator.sobrico .company-separator-inner { background: rgba(186,117,23,0.08); border: 1px solid rgba(186,117,23,0.2); }
+  .company-separator.karlstorz .company-separator-inner { background: rgba(24,95,165,0.08); border: 1px solid rgba(24,95,165,0.2); }
+  .company-dot { width: 10px; height: 10px; border-radius: 50%; flex-shrink: 0; }
+  .sobrico-dot { background: var(--amber); }
+  .karlstorz-dot { background: var(--blue); }
+  .company-name { font-family: 'Clash Display', sans-serif; font-size: 15px; font-weight: 600; color: var(--text-dark); }
+  .company-period { font-size: 12px; color: var(--text-mid); margin-left: 4px; }
+  .sobrico-card::before { background: var(--amber) !important; }
+  .karlstorz-card::before { background: var(--blue) !important; height: 4px; }
+  .sobrico-label { color: var(--amber) !important; }
+  .karlstorz-label { color: var(--blue) !important; }
+  .karlstorz-overlay { background: rgba(12,61,110,0.88) !important; }
+
   /* MODALE PROJET */
   .modal-overlay { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.7); z-index: 1000; align-items: center; justify-content: center; padding: 24px; }
   .modal-overlay.open { display: flex; }
@@ -429,6 +445,15 @@
   <div class="section-label">Mes réalisations</div>
   <h2 class="section-title">Projets</h2>
   <p class="section-sub">Des opérations marketing conçues et déployées en conditions réelles, de la création visuelle à l'envoi et au suivi des performances.</p>
+
+  <!-- SOBRICO -->
+  <div class="company-separator sobrico">
+    <div class="company-separator-inner">
+      <span class="company-dot sobrico-dot"></span>
+      <span class="company-name">SoBrico — B2C · Retail · E-commerce</span>
+      <span class="company-period">2023 – 2025</span>
+    </div>
+  </div>
   <div class="projets-grid">
 
     <!-- Projet 1 — Opération 10% Mai -->
@@ -541,15 +566,99 @@
     </div>
 
     <!-- Projet 5 — Karl Storz (à venir) -->
-    <div class="projet-card coming-soon">
-      <div class="coming-content">
-        <div class="coming-icon">🔬</div>
-        <h3>Karl Storz — Webinaires Médicaux</h3>
-        <p>Visuels d'invitation aux webinaires chirurgicaux · Bientôt disponible</p>
-      </div>
+    <div class="projet-card coming-soon" style="display:none;">
     </div>
 
     <!-- Projet 6 — Projets personnels -->
+    <div class="projet-card coming-soon" style="display:none;">
+    </div>
+
+  </div>
+
+  <!-- KARL STORZ -->
+  <div class="company-separator karlstorz">
+    <div class="company-separator-inner">
+      <span class="company-dot karlstorz-dot"></span>
+      <span class="company-name">Karl Storz — B2B · Médical · Événementiel</span>
+      <span class="company-period">2022 – 2023</span>
+    </div>
+  </div>
+  <div class="projets-grid">
+
+    <!-- Projet KS1 — Invitations Workshop -->
+    <div class="projet-card karlstorz-card">
+      <div class="projet-img-wrap" style="background:#e8f0f7;">
+        <img id="img-ws" src="https://raw.githubusercontent.com/merlinbrgg-byte/Portfolio-Merlin/main/images/karlstorz/Invitation WS - GYN.png" alt="Invitation Workshop">
+        <div class="projet-overlay karlstorz-overlay" onclick="openModal('modal-ws')"><span>Voir le projet →</span></div>
+      </div>
+      <div class="projet-thumbnails">
+        <img src="https://raw.githubusercontent.com/merlinbrgg-byte/Portfolio-Merlin/main/images/karlstorz/Invitation WS - GYN.png" class="active" onclick="switchImg('img-ws', this, 'https://raw.githubusercontent.com/merlinbrgg-byte/Portfolio-Merlin/main/images/karlstorz/Invitation WS - GYN.png')" alt="">
+        <img src="https://raw.githubusercontent.com/merlinbrgg-byte/Portfolio-Merlin/main/images/karlstorz/Invitation WS - URO1.png" onclick="switchImg('img-ws', this, 'https://raw.githubusercontent.com/merlinbrgg-byte/Portfolio-Merlin/main/images/karlstorz/Invitation WS - URO1.png')" alt="">
+        <img src="https://raw.githubusercontent.com/merlinbrgg-byte/Portfolio-Merlin/main/images/karlstorz/Bulletin WS - GYN.png" onclick="switchImg('img-ws', this, 'https://raw.githubusercontent.com/merlinbrgg-byte/Portfolio-Merlin/main/images/karlstorz/Bulletin WS - GYN.png')" alt="">
+        <img src="https://raw.githubusercontent.com/merlinbrgg-byte/Portfolio-Merlin/main/images/karlstorz/Bulletin WS - URO.png" onclick="switchImg('img-ws', this, 'https://raw.githubusercontent.com/merlinbrgg-byte/Portfolio-Merlin/main/images/karlstorz/Bulletin WS - URO.png')" alt="">
+      </div>
+      <div class="projet-info">
+        <div class="projet-company karlstorz-label">Karl Storz · 2022 – 2023</div>
+        <h3>Invitations Workshop — GYN & URO</h3>
+        <p class="projet-desc">Conception d'invitations PDF interactives envoyées à des segments de professionnels de santé selon leur spécialité. Chaque invitation permettait de s'inscrire directement au prochain workshop Karl Storz.</p>
+        <div class="projet-tags">
+          <span class="tool-badge blue">Suite Adobe</span>
+          <span class="tool-badge blue">PDF Interactif</span>
+          <span class="tool-badge blue">B2B Médical</span>
+          <span class="tool-badge blue">Segmentation</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Projet KS2 — ORL E-Masterclass -->
+    <div class="projet-card karlstorz-card">
+      <div class="projet-img-wrap" style="background:#e8f0f7;">
+        <img id="img-orl" src="https://raw.githubusercontent.com/merlinbrgg-byte/Portfolio-Merlin/main/images/karlstorz/Bannière-ORL-EMT-Invitation.png" alt="ORL E-Masterclass">
+        <div class="projet-overlay karlstorz-overlay" onclick="openModal('modal-orl')"><span>Voir le projet →</span></div>
+      </div>
+      <div class="projet-thumbnails">
+        <img src="https://raw.githubusercontent.com/merlinbrgg-byte/Portfolio-Merlin/main/images/karlstorz/Bannière-ORL-EMT-Invitation.png" class="active" onclick="switchImg('img-orl', this, 'https://raw.githubusercontent.com/merlinbrgg-byte/Portfolio-Merlin/main/images/karlstorz/Bannière-ORL-EMT-Invitation.png')" alt="">
+        <img src="https://raw.githubusercontent.com/merlinbrgg-byte/Portfolio-Merlin/main/images/karlstorz/230307-ORL-EMT-flyer invitation.jpg" onclick="switchImg('img-orl', this, 'https://raw.githubusercontent.com/merlinbrgg-byte/Portfolio-Merlin/main/images/karlstorz/230307-ORL-EMT-flyer invitation.jpg')" alt="">
+      </div>
+      <div class="projet-info">
+        <div class="projet-company karlstorz-label">Karl Storz · 2022 – 2023</div>
+        <h3>ORL E-Masterclass — Campagne Complète</h3>
+        <p class="projet-desc">Campagne complète autour d'une e-masterclass en endoscopie endonasale : flyer d'invitation, affiche 40x60 pour le salon de Cannes, bannière digitale et bulletin d'inscription. De l'affiche physique au format digital.</p>
+        <div class="projet-tags">
+          <span class="tool-badge blue">Suite Adobe</span>
+          <span class="tool-badge blue">Print & Digital</span>
+          <span class="tool-badge blue">Événementiel</span>
+          <span class="tool-badge blue">ORL</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Projet KS3 — Congrès & Salons -->
+    <div class="projet-card karlstorz-card">
+      <div class="projet-img-wrap" style="background:#e8f0f7;">
+        <img id="img-congres" src="https://raw.githubusercontent.com/merlinbrgg-byte/Portfolio-Merlin/main/images/karlstorz/Affiche pour le congrés AFU.png" alt="Congrès & Salons">
+        <div class="projet-overlay karlstorz-overlay" onclick="openModal('modal-congres')"><span>Voir le projet →</span></div>
+      </div>
+      <div class="projet-thumbnails">
+        <img src="https://raw.githubusercontent.com/merlinbrgg-byte/Portfolio-Merlin/main/images/karlstorz/Affiche pour le congrés AFU.png" class="active" onclick="switchImg('img-congres', this, 'https://raw.githubusercontent.com/merlinbrgg-byte/Portfolio-Merlin/main/images/karlstorz/Affiche pour le congrés AFU.png')" alt="">
+        <img src="https://raw.githubusercontent.com/merlinbrgg-byte/Portfolio-Merlin/main/images/karlstorz/Affiche pour le OR1 lors des congrès.png" onclick="switchImg('img-congres', this, 'https://raw.githubusercontent.com/merlinbrgg-byte/Portfolio-Merlin/main/images/karlstorz/Affiche pour le OR1 lors des congrès.png')" alt="">
+        <img src="https://raw.githubusercontent.com/merlinbrgg-byte/Portfolio-Merlin/main/images/karlstorz/bannière de webinaire - chir mini NLPC.png" onclick="switchImg('img-congres', this, 'https://raw.githubusercontent.com/merlinbrgg-byte/Portfolio-Merlin/main/images/karlstorz/bannière de webinaire - chir mini NLPC.png')" alt="">
+        <img src="https://raw.githubusercontent.com/merlinbrgg-byte/Portfolio-Merlin/main/images/karlstorz/Affiche SNITEM.png" onclick="switchImg('img-congres', this, 'https://raw.githubusercontent.com/merlinbrgg-byte/Portfolio-Merlin/main/images/karlstorz/Affiche SNITEM.png')" alt="">
+      </div>
+      <div class="projet-info">
+        <div class="projet-company karlstorz-label">Karl Storz · 2022 – 2023</div>
+        <h3>Congrès & Salons Médicaux</h3>
+        <p class="projet-desc">Affiches et bannières conçues pour les congrès et salons médicaux : affiche produit OR1, visuel congrès AFU, bannière webinaire cliquable. Et une participation personnelle à la campagne SNITEM sur le secteur médical.</p>
+        <div class="projet-tags">
+          <span class="tool-badge blue">Suite Adobe</span>
+          <span class="tool-badge blue">Print</span>
+          <span class="tool-badge blue">Congrès</span>
+          <span class="tool-badge blue">SNITEM</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Projets personnels -->
     <div class="projet-card coming-soon">
       <div class="coming-content">
         <div class="coming-icon">🚀</div>
@@ -741,6 +850,77 @@
       <img src="https://raw.githubusercontent.com/merlinbrgg-byte/Portfolio-Merlin/main/images/SB-solde ete-NL-320x320.png" alt="Carré soldes outillage">
       <img src="https://raw.githubusercontent.com/merlinbrgg-byte/Portfolio-Merlin/main/images/SB-solde ete-NL-320x320 copie.png" alt="Carré soldes chauffage">
       <img src="https://raw.githubusercontent.com/merlinbrgg-byte/Portfolio-Merlin/main/images/SB-solde ete-NL-320x320 copie 2.png" alt="Carré soldes salle de bain">
+    </div>
+  </div>
+</div>
+
+<!-- MODALES KARL STORZ -->
+<div class="modal-overlay" id="modal-ws" onclick="closeModal(event, 'modal-ws')">
+  <div class="modal">
+    <button class="modal-close" onclick="document.getElementById('modal-ws').classList.remove('open')">✕</button>
+    <div class="modal-header">
+      <div class="modal-company" style="color:var(--blue);">Karl Storz · 2022 – 2023</div>
+      <h2>Invitations Workshop — GYN & URO</h2>
+      <p class="modal-desc">Conception d'invitations PDF interactives ciblées selon la spécialité médicale du destinataire — gynécologie ou urologie. Chaque document permettait aux professionnels de santé de s'inscrire directement au prochain workshop Karl Storz, avec bulletin d'inscription intégré. Un travail de segmentation précis pour maximiser la pertinence des envois.</p>
+      <div class="modal-tags">
+        <span class="tool-badge blue">Suite Adobe</span>
+        <span class="tool-badge blue">PDF Interactif</span>
+        <span class="tool-badge blue">B2B Médical</span>
+        <span class="tool-badge blue">Segmentation</span>
+        <span class="tool-badge blue">GYN · URO</span>
+      </div>
+    </div>
+    <div class="modal-gallery">
+      <img src="https://raw.githubusercontent.com/merlinbrgg-byte/Portfolio-Merlin/main/images/karlstorz/Invitation WS - GYN.png" alt="Invitation Workshop GYN">
+      <img src="https://raw.githubusercontent.com/merlinbrgg-byte/Portfolio-Merlin/main/images/karlstorz/Invitation WS - URO1.png" alt="Invitation Workshop URO">
+      <img src="https://raw.githubusercontent.com/merlinbrgg-byte/Portfolio-Merlin/main/images/karlstorz/Bulletin WS - GYN.png" alt="Bulletin inscription GYN">
+      <img src="https://raw.githubusercontent.com/merlinbrgg-byte/Portfolio-Merlin/main/images/karlstorz/Bulletin WS - URO.png" alt="Bulletin inscription URO">
+    </div>
+  </div>
+</div>
+
+<div class="modal-overlay" id="modal-orl" onclick="closeModal(event, 'modal-orl')">
+  <div class="modal">
+    <button class="modal-close" onclick="document.getElementById('modal-orl').classList.remove('open')">✕</button>
+    <div class="modal-header">
+      <div class="modal-company" style="color:var(--blue);">Karl Storz · 2022 – 2023</div>
+      <h2>ORL E-Masterclass — Campagne Complète</h2>
+      <p class="modal-desc">Campagne 360° autour d'une e-masterclass en endoscopie endonasale. J'ai conçu l'ensemble des supports : un flyer d'invitation, une affiche 40x60 déployée au salon de l'Association des Cannes (ORL), une bannière digitale interactive et un bulletin d'inscription. Une vraie expérience de production print et digital sur un même projet.</p>
+      <div class="modal-tags">
+        <span class="tool-badge blue">Suite Adobe</span>
+        <span class="tool-badge blue">Print & Digital</span>
+        <span class="tool-badge blue">Événementiel</span>
+        <span class="tool-badge blue">ORL</span>
+        <span class="tool-badge blue">Salon Cannes</span>
+      </div>
+    </div>
+    <div class="modal-gallery">
+      <img src="https://raw.githubusercontent.com/merlinbrgg-byte/Portfolio-Merlin/main/images/karlstorz/Bannière-ORL-EMT-Invitation.png" alt="Bannière ORL EMT">
+      <img src="https://raw.githubusercontent.com/merlinbrgg-byte/Portfolio-Merlin/main/images/karlstorz/230307-ORL-EMT-flyer invitation.jpg" alt="Flyer invitation ORL">
+    </div>
+  </div>
+</div>
+
+<div class="modal-overlay" id="modal-congres" onclick="closeModal(event, 'modal-congres')">
+  <div class="modal">
+    <button class="modal-close" onclick="document.getElementById('modal-congres').classList.remove('open')">✕</button>
+    <div class="modal-header">
+      <div class="modal-company" style="color:var(--blue);">Karl Storz · 2022 – 2023</div>
+      <h2>Congrès & Salons Médicaux</h2>
+      <p class="modal-desc">Conception de visuels pour les grands rendez-vous du secteur médical : une affiche pour le congrès AFU (Association Française d'Urologie), une affiche du produit OR1 utilisée lors des salons, et une bannière de webinaire cliquable pour informer les professionnels. En parallèle, j'ai eu la chance de participer personnellement à la campagne SNITEM, un organisme qui met en lumière les acteurs du secteur médical — j'y ai été interviewé.</p>
+      <div class="modal-tags">
+        <span class="tool-badge blue">Suite Adobe</span>
+        <span class="tool-badge blue">Print</span>
+        <span class="tool-badge blue">Congrès AFU</span>
+        <span class="tool-badge blue">Bannière Web</span>
+        <span class="tool-badge blue">SNITEM</span>
+      </div>
+    </div>
+    <div class="modal-gallery">
+      <img src="https://raw.githubusercontent.com/merlinbrgg-byte/Portfolio-Merlin/main/images/karlstorz/Affiche pour le congrés AFU.png" alt="Affiche congrès AFU">
+      <img src="https://raw.githubusercontent.com/merlinbrgg-byte/Portfolio-Merlin/main/images/karlstorz/Affiche pour le OR1 lors des congrès.png" alt="Affiche OR1">
+      <img src="https://raw.githubusercontent.com/merlinbrgg-byte/Portfolio-Merlin/main/images/karlstorz/bannière de webinaire - chir mini NLPC.png" alt="Bannière webinaire">
+      <img src="https://raw.githubusercontent.com/merlinbrgg-byte/Portfolio-Merlin/main/images/karlstorz/Affiche SNITEM.png" alt="Affiche SNITEM">
     </div>
   </div>
 </div>
