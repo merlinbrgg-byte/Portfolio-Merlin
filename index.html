@@ -54,15 +54,15 @@
   .hero-geo2 { position: absolute; background: var(--green); width: 90px; height: 90px; border-radius: 50%; bottom: 60px; right: 60px; opacity: 0.7; animation: float 8s ease-in-out infinite reverse; }
   .hero-geo3 { position: absolute; border: 2px solid rgba(255,255,255,0.2); width: 200px; height: 200px; border-radius: 50%; bottom: -60px; left: 30px; animation: float 10s ease-in-out infinite; }
   @keyframes float { 0%, 100% { transform: translateY(0) rotate(20deg); } 50% { transform: translateY(-16px) rotate(20deg); } }
-  .hero-card { position: relative; z-index: 2; background: rgba(255,255,255,0.1); backdrop-filter: blur(10px); border: 1px solid rgba(255,255,255,0.2); border-radius: 16px; padding: 28px; width: 320px; animation: fadeUp 0.8s 0.3s ease both; }
-  .hero-card-avatar { width: 72px; height: 72px; border-radius: 50%; overflow: hidden; margin-bottom: 16px; border: 3px solid var(--amber); flex-shrink: 0; }
+  .hero-card { position: relative; z-index: 2; background: rgba(255,255,255,0.1); backdrop-filter: blur(10px); border: 1px solid rgba(255,255,255,0.2); border-radius: 20px; padding: 36px; width: 420px; animation: fadeUp 0.8s 0.3s ease both; }
+  .hero-card-avatar { width: 96px; height: 96px; border-radius: 50%; overflow: hidden; margin-bottom: 20px; border: 4px solid var(--amber); flex-shrink: 0; }
   .hero-card-avatar img { width: 100%; height: 100%; object-fit: cover; }
-  .hero-card h3 { font-family: 'Clash Display', sans-serif; font-size: 20px; font-weight: 700; color: white; margin-bottom: 4px; }
-  .hero-card p { font-size: 13px; color: rgba(255,255,255,0.65); margin-bottom: 20px; }
-  .hero-card-stats { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
-  .stat-box { background: rgba(255,255,255,0.08); border-radius: 8px; padding: 12px; border: 1px solid rgba(255,255,255,0.1); }
-  .stat-num { font-family: 'Clash Display', sans-serif; font-size: 22px; font-weight: 700; color: white; }
-  .stat-label { font-size: 10px; color: rgba(255,255,255,0.55); margin-top: 2px; line-height: 1.3; }
+  .hero-card h3 { font-family: 'Clash Display', sans-serif; font-size: 24px; font-weight: 700; color: white; margin-bottom: 6px; }
+  .hero-card p { font-size: 14px; color: rgba(255,255,255,0.65); margin-bottom: 24px; }
+  .hero-card-stats { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+  .stat-box { background: rgba(255,255,255,0.08); border-radius: 10px; padding: 16px; border: 1px solid rgba(255,255,255,0.1); }
+  .stat-num { font-family: 'Clash Display', sans-serif; font-size: 26px; font-weight: 700; color: white; }
+  .stat-label { font-size: 11px; color: rgba(255,255,255,0.55); margin-top: 4px; line-height: 1.3; }
   .stat-box.amber .stat-num { color: var(--amber-light); }
   .stat-box.green .stat-num { color: var(--green-light); }
   @keyframes fadeUp { from { opacity: 0; transform: translateY(24px); } to { opacity: 1; transform: translateY(0); } }
@@ -129,8 +129,8 @@
   .projet-card { background: white; border-radius: 16px; overflow: hidden; border: 1px solid var(--gray-light); transition: all 0.3s; cursor: pointer; }
   .projet-card:hover { transform: translateY(-5px); box-shadow: 0 20px 48px rgba(24,95,165,0.14); }
   .projet-card:hover .projet-overlay { opacity: 1; }
-  .projet-img-wrap { position: relative; height: 220px; overflow: hidden; background: #1a1a2e; }
-  .projet-img-wrap img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.4s; }
+  .projet-img-wrap { position: relative; height: 240px; overflow: hidden; background: #eef2f7; display: flex; align-items: center; justify-content: center; }
+  .projet-img-wrap img { width: 100%; height: 100%; object-fit: contain; transition: transform 0.4s; padding: 8px; }
   .projet-card:hover .projet-img-wrap img { transform: scale(1.05); }
   .projet-overlay { position: absolute; inset: 0; background: rgba(24,95,165,0.85); display: flex; align-items: center; justify-content: center; opacity: 0; transition: opacity 0.3s; }
   .projet-overlay span { color: white; font-size: 14px; font-weight: 500; border: 1px solid rgba(255,255,255,0.5); padding: 10px 20px; border-radius: 6px; }
@@ -151,6 +151,22 @@
   .coming-icon { font-size: 48px; margin-bottom: 16px; }
   .coming-content h3 { font-family: 'Clash Display', sans-serif; font-size: 20px; font-weight: 700; color: var(--text-mid); margin-bottom: 8px; }
   .coming-content p { font-size: 14px; color: var(--text-mid); opacity: 0.7; }
+
+  /* MODALE PROJET */
+  .modal-overlay { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.7); z-index: 1000; align-items: center; justify-content: center; padding: 24px; }
+  .modal-overlay.open { display: flex; }
+  .modal { background: white; border-radius: 20px; max-width: 860px; width: 100%; max-height: 90vh; overflow-y: auto; position: relative; animation: fadeUp 0.3s ease; }
+  .modal-close { position: absolute; top: 20px; right: 20px; background: var(--off-white); border: none; width: 36px; height: 36px; border-radius: 50%; font-size: 18px; cursor: pointer; display: flex; align-items: center; justify-content: center; z-index: 10; transition: background 0.2s; }
+  .modal-close:hover { background: var(--gray-light); }
+  .modal-header { padding: 36px 36px 0; }
+  .modal-company { font-size: 11px; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: var(--blue); margin-bottom: 8px; display: flex; align-items: center; gap: 8px; }
+  .modal-company::before { content: ''; width: 20px; height: 2px; background: var(--amber); display: block; }
+  .modal h2 { font-family: 'Clash Display', sans-serif; font-size: 28px; font-weight: 700; color: var(--text-dark); margin-bottom: 12px; }
+  .modal-desc { font-size: 15px; color: var(--text-mid); line-height: 1.7; margin-bottom: 20px; }
+  .modal-tags { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 28px; }
+  .modal-gallery { display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; padding: 0 36px 36px; }
+  .modal-gallery img { width: 100%; border-radius: 10px; object-fit: contain; background: #f4f2ee; padding: 8px; border: 1px solid var(--gray-light); max-height: 200px; }
+  .modal-gallery img:first-child:nth-last-child(1) { grid-column: 1 / -1; }
 
   /* FORMATION */
   #formation { background: white; }
@@ -218,13 +234,13 @@
 <!-- HERO -->
 <section id="hero">
   <div class="hero-left">
-    <div class="hero-tag">Disponible · Nantes (priorité) · Paris · Tours</div>
+    <div class="hero-tag">Disponible · Nantes · Paris · Tours</div>
     <h1>
       Marketing<br>
       <span class="highlight">Digital</span><br>
       B2B & B2C
     </h1>
-    <p class="hero-desc">Spécialiste emailing, CRM et événementiel live. Je crée des campagnes qui engagent, des expériences qui marquent, et des données qui parlent.</p>
+    <p class="hero-desc">Spécialiste en gestion de CRM et marketing automation, je conçois des campagnes qui engagent votre communauté, des expériences qui marquent les esprits et des analyses qui guident vos décisions.</p>
     <div class="hero-tags">
       <span class="tag tag-blue">Emailing</span>
       <span class="tag tag-blue">CRM</span>
@@ -275,12 +291,12 @@
 <section id="competences">
   <div class="section-label">Ce que je fais</div>
   <h2 class="section-title">Mes compétences</h2>
-  <p class="section-sub">Une double culture B2B et B2C acquise en alternance, au service de campagnes performantes et d'événements impactants.</p>
+  <p class="section-sub">Avec ma double culture B2B et B2C acquise en alternance, je saurai mettre ces compétences au service de campagnes performantes et d'événements impactants.</p>
   <div class="skills-grid">
     <div class="skill-card blue">
       <div class="skill-icon blue">📧</div>
       <h3>Emailing & CRM</h3>
-      <p>Conception et pilotage de campagnes d'emailing end-to-end : segmentation, scénarisation, A/B testing, analyse des performances.</p>
+      <p>Conception des mails et pilotage de campagnes d'emailing : segmentation, scénarisation, A/B testing et analyse des performances.</p>
       <div class="skill-tools">
         <span class="tool-badge blue">Selligent</span>
         <span class="tool-badge blue">Pardot</span>
@@ -355,7 +371,7 @@
       <h3>Karl Storz</h3>
       <div class="exp-role">Chargé de Marketing Digital</div>
       <ul class="exp-missions">
-        <li>Gestion de campagnes d'invitation aux webinaires médicaux : segmentation et envoi à des bases de 100 à 1 000 professionnels de santé selon la spécialité</li>
+        <li>Gestion de campagnes d'invitation aux webinaires médicaux : segmentation et envoi à des bases de nombreux professionnels de santé selon la spécialité</li>
         <li>Supervision de plus d'une dizaine de webinaires en collaboration avec des professionnels de santé</li>
         <li>Création des supports visuels de communication (Suite Adobe)</li>
         <li>Coordination logistique des événements : planning, intervenants, équipements techniques</li>
@@ -379,6 +395,7 @@
         <li>Pilotage des campagnes commerciales digitales : création des événements sur le site web, ciblages et segmentations des profils client</li>
         <li>Mise en place de scénarios d'automation sur Selligent : workflows, nurturing et segmentation avancée</li>
         <li>Chargé de la sélection et du déploiement des opérations commerciales (Suite Adobe / CRM)</li>
+        <li>Réalisation des visuels pour le site web et les campagnes d'emailing : bannières web, visuels mail, déclinaisons multi-formats</li>
       </ul>
       <div class="exp-tags">
         <span class="tool-badge amber">Selligent</span>
@@ -418,7 +435,7 @@
     <div class="projet-card">
       <div class="projet-img-wrap">
         <img id="img-mai" src="https://raw.githubusercontent.com/merlinbrgg-byte/Portfolio-Merlin/main/images/10PC Juin.png" alt="Opération 10% Mai">
-        <div class="projet-overlay"><span>Voir le projet</span></div>
+        <div class="projet-overlay" onclick="openModal('modal-mai')"><span>Voir le projet →</span></div>
       </div>
       <div class="projet-thumbnails">
         <img src="https://raw.githubusercontent.com/merlinbrgg-byte/Portfolio-Merlin/main/images/10PC Juin.png" class="active" onclick="switchImg('img-mai', this, 'https://raw.githubusercontent.com/merlinbrgg-byte/Portfolio-Merlin/main/images/10PC Juin.png')" alt="">
@@ -444,7 +461,7 @@
     <div class="projet-card">
       <div class="projet-img-wrap">
         <img id="img-weekend" src="https://raw.githubusercontent.com/merlinbrgg-byte/Portfolio-Merlin/main/images/Promo-week-end-9-Février---NL.png" alt="Offre Week-end Février">
-        <div class="projet-overlay"><span>Voir le projet</span></div>
+        <div class="projet-overlay" onclick="openModal('modal-weekend')"><span>Voir le projet →</span></div>
       </div>
       <div class="projet-thumbnails">
         <img src="https://raw.githubusercontent.com/merlinbrgg-byte/Portfolio-Merlin/main/images/Promo-week-end-9-Février---NL.png" class="active" onclick="switchImg('img-weekend', this, 'https://raw.githubusercontent.com/merlinbrgg-byte/Portfolio-Merlin/main/images/Promo-week-end-9-Février---NL.png')" alt="">
@@ -470,7 +487,7 @@
     <div class="projet-card">
       <div class="projet-img-wrap">
         <img id="img-paques" src="https://raw.githubusercontent.com/merlinbrgg-byte/Portfolio-Merlin/main/images/Ban pâques - 2.png" alt="Chasse aux Lapins">
-        <div class="projet-overlay"><span>Voir le projet</span></div>
+        <div class="projet-overlay" onclick="openModal('modal-paques')"><span>Voir le projet →</span></div>
       </div>
       <div class="projet-thumbnails">
         <img src="https://raw.githubusercontent.com/merlinbrgg-byte/Portfolio-Merlin/main/images/Ban pâques - 2.png" class="active" onclick="switchImg('img-paques', this, 'https://raw.githubusercontent.com/merlinbrgg-byte/Portfolio-Merlin/main/images/Ban pâques - 2.png')" alt="">
@@ -496,7 +513,7 @@
     <div class="projet-card">
       <div class="projet-img-wrap">
         <img id="img-soldes" src="https://raw.githubusercontent.com/merlinbrgg-byte/Portfolio-Merlin/main/images/SB-solde ete-NL-640x300.png" alt="Soldes Été">
-        <div class="projet-overlay"><span>Voir le projet</span></div>
+        <div class="projet-overlay" onclick="openModal('modal-soldes')"><span>Voir le projet →</span></div>
       </div>
       <div class="projet-thumbnails">
         <img src="https://raw.githubusercontent.com/merlinbrgg-byte/Portfolio-Merlin/main/images/SB-solde ete-NL-640x300.png" class="active" onclick="switchImg('img-soldes', this, 'https://raw.githubusercontent.com/merlinbrgg-byte/Portfolio-Merlin/main/images/SB-solde ete-NL-640x300.png')" alt="">
@@ -617,6 +634,103 @@
   <p>© 2025 <span>Merlin Bourgoin</span> — Portfolio Marketing Digital</p>
 </footer>
 
+<!-- MODALES PROJETS -->
+<div class="modal-overlay" id="modal-mai" onclick="closeModal(event, 'modal-mai')">
+  <div class="modal">
+    <button class="modal-close" onclick="document.getElementById('modal-mai').classList.remove('open')">✕</button>
+    <div class="modal-header">
+      <div class="modal-company">SoBrico · 2024</div>
+      <h2>Opération Commerciale — 10% Mai</h2>
+      <p class="modal-desc">Conception et déclinaison d'une opération promotionnelle en multi-formats pour une diffusion omnicanale. Les visuels ont été adaptés en story verticale, carré réseaux sociaux, bannière newsletter et vignette page produit, puis déployés via emailing segmenté sur Selligent.</p>
+      <div class="modal-tags">
+        <span class="tool-badge amber">Suite Adobe</span>
+        <span class="tool-badge amber">Selligent</span>
+        <span class="tool-badge amber">Multi-formats</span>
+        <span class="tool-badge amber">Emailing</span>
+        <span class="tool-badge amber">B2C</span>
+      </div>
+    </div>
+    <div class="modal-gallery">
+      <img src="https://raw.githubusercontent.com/merlinbrgg-byte/Portfolio-Merlin/main/images/10PC Juin.png" alt="Bannière horizontale">
+      <img src="https://raw.githubusercontent.com/merlinbrgg-byte/Portfolio-Merlin/main/images/10PC Juin (1).png" alt="Format story">
+      <img src="https://raw.githubusercontent.com/merlinbrgg-byte/Portfolio-Merlin/main/images/10PC Juin (2).png" alt="Format carré">
+      <img src="https://raw.githubusercontent.com/merlinbrgg-byte/Portfolio-Merlin/main/images/Vignette-page-produit-20pcjuin-v2.png" alt="Vignette page produit">
+    </div>
+  </div>
+</div>
+
+<div class="modal-overlay" id="modal-weekend" onclick="closeModal(event, 'modal-weekend')">
+  <div class="modal">
+    <button class="modal-close" onclick="document.getElementById('modal-weekend').classList.remove('open')">✕</button>
+    <div class="modal-header">
+      <div class="modal-company">SoBrico · Février 2024</div>
+      <h2>Offre Spéciale Week-end</h2>
+      <p class="modal-desc">Opération promotionnelle palier d'achat (−10€, −30€, −80€) déclinée sur l'ensemble des canaux digitaux : newsletter, bannière homepage, bannière site web, pop-in et posts Instagram. Conception graphique complète et coordination de la diffusion.</p>
+      <div class="modal-tags">
+        <span class="tool-badge blue">Suite Adobe</span>
+        <span class="tool-badge blue">Multicanal</span>
+        <span class="tool-badge blue">Newsletter</span>
+        <span class="tool-badge blue">Social Media</span>
+        <span class="tool-badge blue">Pop-in</span>
+      </div>
+    </div>
+    <div class="modal-gallery">
+      <img src="https://raw.githubusercontent.com/merlinbrgg-byte/Portfolio-Merlin/main/images/Promo-week-end-9-Février---NL.png" alt="Newsletter">
+      <img src="https://raw.githubusercontent.com/merlinbrgg-byte/Portfolio-Merlin/main/images/Promo-week-end-9-Février---Ban-Home-NL.png" alt="Bannière homepage">
+      <img src="https://raw.githubusercontent.com/merlinbrgg-byte/Portfolio-Merlin/main/images/Promo_week-end_9-fevrier-INSTA (1).png" alt="Post Instagram">
+      <img src="https://raw.githubusercontent.com/merlinbrgg-byte/Portfolio-Merlin/main/images/Promo-week-end-9-Février---pop-in.png" alt="Pop-in site">
+    </div>
+  </div>
+</div>
+
+<div class="modal-overlay" id="modal-paques" onclick="closeModal(event, 'modal-paques')">
+  <div class="modal">
+    <button class="modal-close" onclick="document.getElementById('modal-paques').classList.remove('open')">✕</button>
+    <div class="modal-header">
+      <div class="modal-company">SoBrico · Pâques 2024</div>
+      <h2>La Chass'Lapins — Opération Gamifiée</h2>
+      <p class="modal-desc">Opération événementielle interactive : des lapins étaient cachés sur les pages du site, les visiteurs devaient les trouver pour remporter des codes promo. Conception de l'univers visuel complet — logo dédié, visuels réseaux sociaux et illustrations des différents états du lapin (trouvé, déjà trouvé, raté).</p>
+      <div class="modal-tags">
+        <span class="tool-badge green">Gamification</span>
+        <span class="tool-badge green">Suite Adobe</span>
+        <span class="tool-badge green">Social Media</span>
+        <span class="tool-badge green">Événementiel</span>
+        <span class="tool-badge green">UX</span>
+      </div>
+    </div>
+    <div class="modal-gallery">
+      <img src="https://raw.githubusercontent.com/merlinbrgg-byte/Portfolio-Merlin/main/images/Ban pâques - 2.png" alt="Bannière Pâques">
+      <img src="https://raw.githubusercontent.com/merlinbrgg-byte/Portfolio-Merlin/main/images/Logo_SB_Paques.png" alt="Logo Chass'Lapins">
+      <img src="https://raw.githubusercontent.com/merlinbrgg-byte/Portfolio-Merlin/main/images/Lapin coté.png" alt="Lapin trouvé">
+      <img src="https://raw.githubusercontent.com/merlinbrgg-byte/Portfolio-Merlin/main/images/Lapin dans son trou.png" alt="Lapin caché">
+    </div>
+  </div>
+</div>
+
+<div class="modal-overlay" id="modal-soldes" onclick="closeModal(event, 'modal-soldes')">
+  <div class="modal">
+    <button class="modal-close" onclick="document.getElementById('modal-soldes').classList.remove('open')">✕</button>
+    <div class="modal-header">
+      <div class="modal-company">SoBrico · Été 2024</div>
+      <h2>Soldes Été — Déclinaisons par Univers</h2>
+      <p class="modal-desc">Conception des visuels soldes déclinés par univers produit (jardin, salle de bain, chauffage, outillage, électroportatif, vêtements...) en différents formats pour newsletter et site web. Chaque univers dispose de sa propre déclinaison visuelle dans une charte graphique cohérente.</p>
+      <div class="modal-tags">
+        <span class="tool-badge amber">Suite Adobe</span>
+        <span class="tool-badge amber">Multi-univers</span>
+        <span class="tool-badge amber">Newsletter</span>
+        <span class="tool-badge amber">Soldes</span>
+        <span class="tool-badge amber">Charte graphique</span>
+      </div>
+    </div>
+    <div class="modal-gallery">
+      <img src="https://raw.githubusercontent.com/merlinbrgg-byte/Portfolio-Merlin/main/images/SB-solde ete-NL-640x300.png" alt="Bannière soldes jardin">
+      <img src="https://raw.githubusercontent.com/merlinbrgg-byte/Portfolio-Merlin/main/images/SB-solde ete-NL-320x320.png" alt="Carré soldes outillage">
+      <img src="https://raw.githubusercontent.com/merlinbrgg-byte/Portfolio-Merlin/main/images/SB-solde ete-NL-320x320 copie.png" alt="Carré soldes chauffage">
+      <img src="https://raw.githubusercontent.com/merlinbrgg-byte/Portfolio-Merlin/main/images/SB-solde ete-NL-320x320 copie 2.png" alt="Carré soldes salle de bain">
+    </div>
+  </div>
+</div>
+
 <script>
 function switchImg(imgId, thumb, src) {
   document.getElementById(imgId).src = src;
@@ -624,6 +738,24 @@ function switchImg(imgId, thumb, src) {
   container.querySelectorAll('img').forEach(t => t.classList.remove('active'));
   thumb.classList.add('active');
 }
+function openModal(id) {
+  document.getElementById(id).classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+function closeModal(event, id) {
+  if (event.target === event.currentTarget) {
+    document.getElementById(id).classList.remove('open');
+    document.body.style.overflow = '';
+  }
+}
+document.addEventListener('keydown', function(e) {
+  if (e.key === 'Escape') {
+    document.querySelectorAll('.modal-overlay.open').forEach(m => {
+      m.classList.remove('open');
+      document.body.style.overflow = '';
+    });
+  }
+});
 </script>
 
 </body>
